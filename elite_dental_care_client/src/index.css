@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.active{
+    color: #F7A582;
+    border-bottom:double;
+}
