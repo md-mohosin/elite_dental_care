@@ -6,7 +6,7 @@ import img3 from '../../../assets/depositphotos_362623104-stock-photo-indian-med
 const Banner = () => {
     return (
 
-        <div className="hero  text-white h-[500px]">
+        <div className="hero  text-white h-[500px] mb-10">
             <div className="hero-content flex-col lg:flex-row lg:justify-between w-11/12 gap-4">
 
                 <div className='lg:w-1/2'>
