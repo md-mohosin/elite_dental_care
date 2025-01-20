@@ -4,7 +4,7 @@ const cors = require('cors');
 
 require('dotenv').config()
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 const port = process.env.PORT || 5000;
 
@@ -41,6 +41,36 @@ async function run() {
     // await client.connect();
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
+
+
+
+    const doctorsCollection = client.db('elite_dental_care_DB').collection('doctors')
+
+
+
+
+
+
+    // DOCTORS DATA
+    app.get('/doctors', async (req, res) => {
+      const result = await doctorsCollection.find().toArray()
+      res.send(result)
+    })
+
+
+    app.get('/doctors/:id', async (req, res) => {
+      const id = req.params.id
+      const query = { _id: id }
+      const result = await doctorsCollection.findOne(query)
+      res.send(result)
+    })
+
+
+
+
+
+
+
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
@@ -56,11 +86,11 @@ run().catch(console.dir);
 
 
 
-app.get('/',(req,res)=>{
-    res.send('elite dental care')
+app.get('/', (req, res) => {
+  res.send('elite dental care')
 })
 
 
-app.listen(port,()=>{
-    console.log(`ELITE DENTAL CARE IS RUNNING ON PORT : ${port}`);
+app.listen(port, () => {
+  console.log(`ELITE DENTAL CARE IS RUNNING ON PORT : ${port}`);
 })
