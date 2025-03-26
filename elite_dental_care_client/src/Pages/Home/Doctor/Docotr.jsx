@@ -16,7 +16,7 @@ const Docotr = ({ doctor }) => {
             <div className="p-2 bg-base-100 rounded border w-full space-y-4">
                 <div>
                     <img
-                        className="w-full rounded"
+                        className="w-full rounded h-72"
                         src={image}
                         alt="Doctor" />
                 </div>

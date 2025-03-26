@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 .active{
     color: #F7A582;
-    border-bottom:double;
 }

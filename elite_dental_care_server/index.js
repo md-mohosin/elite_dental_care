@@ -46,6 +46,7 @@ async function run() {
 
     const doctorsCollection = client.db('elite_dental_care_DB').collection('doctors')
     const reviewsCollection = client.db('elite_dental_care_DB').collection('reviews')
+    const serviceCollection = client.db('elite_dental_care_DB').collection('service')
 
 
 
@@ -73,6 +74,22 @@ async function run() {
     // REVIEWS DATA
     app.get('/reviews', async (req, res) => {
       const result = await reviewsCollection.find().toArray()
+      res.send(result)
+    })
+
+
+
+    // SERVICE DATA
+    app.get('/service', async (req, res) => {
+      const result = await serviceCollection.find().toArray()
+      res.send(result)
+    })
+
+
+    app.get('/service/:id', async (req, res) => {
+      const id = req.params.id
+      const query = { _id: (id) }
+      const result = await serviceCollection.findOne(query)
       res.send(result)
     })
 

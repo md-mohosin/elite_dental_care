@@ -6,11 +6,11 @@ import img3 from '../../../assets/depositphotos_362623104-stock-photo-indian-med
 const Banner = () => {
     return (
 
-        <div className="hero  text-white h-[500px] mb-10">
+        <div className="hero h-[600px] mb-10">
             <div className="hero-content flex-col lg:flex-row lg:justify-between w-11/12 gap-4">
 
                 <div className='lg:w-1/2'>
-                    <h1 className="text-5xl font-bold">Your Best Medical Help Center</h1>
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">Your Best Medical Help Center</h1>
                     <p className="py-6">
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
                         quasi. In deleniti eaque aut repudiandae et a id nisi.
@@ -37,14 +37,8 @@ const Banner = () => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-
-
-
-
     );
 };
 

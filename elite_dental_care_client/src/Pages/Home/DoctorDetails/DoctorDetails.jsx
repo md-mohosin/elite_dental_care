@@ -20,16 +20,16 @@ const DoctorDetails = () => {
     })
 
     return (
-        <div className="bg-[#F3F3F3]">
+        <div>
             <div className="bg-[#07332F]">
                 <Navbar></Navbar>
                 <h1 className="text-4xl font-bold w-11/12 mx-auto py-28">Doctore Profile</h1>
             </div>
-            <div className="bg-white flex flex-col lg:flex-row items-center gap-6 w-6/12 mx-auto p-3 rounded">
+            <div className="flex flex-col lg:flex-row items-center gap-6 lg:w-6/12 mx-auto p-3 rounded my-32">
                 <div>
                     <img className="h-full rounded" src={doctor.image} alt="" />
                 </div>
-                <div className="text-black space-y-4">
+                <div className="space-y-4">
                     <h1 className="text-3xl font-bold">{doctor.name}</h1>
                     <p>{doctor.position}</p>
                     <p>{doctor.location}</p>
