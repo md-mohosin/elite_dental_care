@@ -44,10 +44,11 @@ async function run() {
 
 
 
+    const usersCollection = client.db('elite_dental_care_DB').collection('users')
     const doctorsCollection = client.db('elite_dental_care_DB').collection('doctors')
     const reviewsCollection = client.db('elite_dental_care_DB').collection('reviews')
     const serviceCollection = client.db('elite_dental_care_DB').collection('service')
-
+    const appointMentCollection = client.db('elite_dental_care_DB').collection('appointment')
 
 
 
@@ -79,6 +80,8 @@ async function run() {
 
 
 
+
+
     // SERVICE DATA
     app.get('/service', async (req, res) => {
       const result = await serviceCollection.find().toArray()
@@ -88,10 +91,36 @@ async function run() {
 
     app.get('/service/:id', async (req, res) => {
       const id = req.params.id
-      const query = { _id: (id) }
+      const query = { _id: id }
       const result = await serviceCollection.findOne(query)
       res.send(result)
     })
+
+
+
+
+
+
+
+    // APPOINTMENT DATA
+    app.post('/appointment', async (req, res) => {
+      const data = req.body
+      const result = await appointMentCollection.insertOne(data)
+      res.send(result)
+    })
+
+
+
+
+    // USERS DATA
+    app.post('/users', async (req, res) => {
+      const user = req.body
+      const result = await usersCollection.insertOne(user)
+      res.send(result)
+    })
+
+
+
 
 
 

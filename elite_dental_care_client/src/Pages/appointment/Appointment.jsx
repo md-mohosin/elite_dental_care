@@ -10,7 +10,7 @@ const Appointment = () => {
 
 
     const { data: services = [] } = useQuery({
-        queryKey: ['_id'],
+        queryKey: ['serv'],
         queryFn: async () => {
             const res = await axiosPublic.get('/service')
             return res.data
@@ -23,10 +23,10 @@ const Appointment = () => {
                 <Navbar></Navbar>
                 <h1 className="text-4xl font-bold w-11/12 mx-auto py-28">Appointment</h1>
             </div>
-            <div className='w-11/12 mx-auto'>
+            <div className='w-11/12 mx-auto my-10'>
                 <h1 className='text-4xl font-bold text-center'>Please Select a Service
                 </h1>
-                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-8'>
+                <div className='grid  md:grid-cols-3 lg:grid-cols-4 w-full gap-8 py-20'>
                     {
                         Array.isArray(services) && services.map(service => <Link to={`/appointment/${service._id}`}>
                             <div className='w-full flex items-center gap-3 bg-white text-black p-4 rounded-lg cursor-pointer'>

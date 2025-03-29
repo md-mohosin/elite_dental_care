@@ -2,18 +2,22 @@
 import { useState } from "react";
 import Docotr from "../Doctor/Docotr";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 
 const Doctors = () => {
 
     const axiosPublic = useAxiosPublic()
 
-    const [doctors, setDoctors] = useState([])
+    const { data: doctors } = useQuery({
+        queryKey: ['_id'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/doctors')
+            return res.data
+        }
+    })
 
-    axiosPublic.get('/doctors')
-        .then(res => {
-            setDoctors(res.data)
-        })
+
 
 
 
@@ -25,7 +29,7 @@ const Doctors = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mt-10">
                 {
-                    doctors.map(doctor => <Docotr key={doctor._id} doctor={doctor}></Docotr>)
+                    Array.isArray(doctors) && doctors.map(doctor => <Docotr key={doctor._id} doctor={doctor}></Docotr>)
                 }
             </div>
         </div>

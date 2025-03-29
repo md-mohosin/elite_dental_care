@@ -11,7 +11,7 @@ const Reviews = () => {
     const axiosPublic = useAxiosPublic()
 
     const { data: reviews = [], isLoading } = useQuery({
-        queryKey: ['_id'],
+        queryKey: ['rev'],
         queryFn: async () => {
             const res = await axiosPublic.get('/reviews')
             return res.data
@@ -33,19 +33,19 @@ const Reviews = () => {
                 }}
             >
                 {
-                    Array.isArray(reviews) ? reviews.map(review =>
-                        <SwiperSlide key={review._id}>
+                    Array.isArray(reviews) ? reviews.map(rev =>
+                        <SwiperSlide key={rev._id}>
                             <div className='w-full flex h-[200px] rounded-lg border-2 py-6 px-6 lg:px-14'>
                                 <div className='space-y-3'>
                                     <div className='flex gap-2 items-center'>
-                                        <img className='w-10 h-10 rounded-full border-2 border-blue-800' src={review.image} alt="" />
+                                        <img className='w-10 h-10 rounded-full border-2 border-blue-800' src={rev.image} alt="" />
                                         <div>
-                                            <h1 className='font-bold'>{review.name}</h1>
-                                            <p>{review.position}</p>
+                                            <h1 className='font-bold'>{rev.name}</h1>
+                                            <p>{rev.position}</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <p>{review.review}</p>
+                                        <p>{rev.review}</p>
                                     </div>
                                 </div>
                             </div>

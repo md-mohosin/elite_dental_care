@@ -9,7 +9,8 @@ import Login from "../Pages/authentication/Login";
 import PrivetRoute from "./PrivetRoute";
 import Appointment from "../Pages/appointment/Appointment";
 import AppointmentForm from "../Pages/appointment/AppointmentForm";
-
+import Dashboard from "../layouts/Dashboard";
+import Sidebar from "../Pages/Dashboard/Sidebar/Sidebar";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,21 +26,31 @@ export const router = createBrowserRouter([
 
       },
       {
-        path:"appointment",
-        element:<Appointment></Appointment>
+        path: "appointment",
+        element: <Appointment></Appointment>
       },
       {
-        path:"appointment/:id",
-        element:<AppointmentForm></AppointmentForm>
+        path: "appointment/:id",
+        element: <AppointmentForm></AppointmentForm>
+      },
+      {
+        path: "signUp",
+        element: <SignUp></SignUp>
+      },
+      {
+        path: "login",
+        element: <Login></Login>
       }
     ]
   },
   {
-    path: "signUp",
-    element: <SignUp></SignUp>
-  },
+    path:'dashboard',
+    element:<Dashboard></Dashboard>,
+    children:[
   {
-    path: "login",
-    element: <Login></Login>
+    path:"sidebar",
+    element:<Sidebar></Sidebar>
+  }
+    ]
   }
 ]);

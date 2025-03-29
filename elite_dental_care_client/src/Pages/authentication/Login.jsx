@@ -7,8 +7,10 @@ import img from '../../assets/Frame.png'
 import img2 from '../../assets/Frame2.png'
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
+import SocialLogin from '../../components/SocialLogin';
 
 const Login = () => {
+
 
     const { login } = useAuth()
 
@@ -24,6 +26,7 @@ const Login = () => {
             .catch(error => {
                 console.log(error)
             })
+
     }
 
 
@@ -70,9 +73,10 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn bg-[#F7A582] text-white border-none">Login</button>
                         </div>
-
-                        <h1 className=' font-semibold py-4'>Do ot  have an account?<Link to='/signUp' className='font-bold text-red-700'>Sign UP</Link></h1>
-
+                        <div className='flex items-center justify-center my-4'>
+                            <SocialLogin></SocialLogin>
+                        </div>
+                        <h1 className='font-semibold py-4'>Do ot  have an account?<Link to='/signUp' className='font-bold text-red-700'>Sign UP</Link></h1>
                     </form>
                 </div>
             </div>

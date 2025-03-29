@@ -2,8 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Navbar from "../../Shared/Navbar/Navbar";
-import { FaMapLocation } from "react-icons/fa6";
-
 
 const DoctorDetails = () => {
 
@@ -15,6 +13,7 @@ const DoctorDetails = () => {
         queryKey: ['_id'],
         queryFn: async () => {
             const res = await axiosPublic.get(`/doctors/${id}`)
+            console.log(res)
             return res.data
         }
     })

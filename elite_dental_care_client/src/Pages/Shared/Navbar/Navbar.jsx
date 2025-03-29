@@ -1,7 +1,6 @@
 import { GiFirstAidKit } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-import DarkModeToggler from "../../../components/DarkModeToggler";
 
 const Navbar = () => {
 
@@ -15,16 +14,20 @@ const Navbar = () => {
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/about'>About</NavLink>
         <NavLink to='/appointment'>Appointment</NavLink>
+        {user && <NavLink to='/dashboard'>Dashboard</NavLink>}
+
         {
             user ?
                 <button
                     onClick={handleLogOut}
-                    className="btn btn-sm bg-white text-black text-xs py-0">LogOut</button>
+                    className="btn btn-xs bg-white text-black text-xs py-0">LogOut</button>
                 :
                 <NavLink to='/login'>Login</NavLink>
 
         }
-        <DarkModeToggler></DarkModeToggler>
+        {/* {
+            user & <img src={user.photoURL} alt="" />
+        } */}
     </>
 
 
