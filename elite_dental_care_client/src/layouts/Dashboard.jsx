@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { CiMenuBurger } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { RiMenuFold4Line } from "react-icons/ri";
-import { MdDashboard } from "react-icons/md";
+import useAuth from "../hooks/useAuth";
+import Sidebar from "../Pages/Dashboard/Sidebar/Sidebar";
+import { FaHome } from "react-icons/fa";
 
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuth()
+
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -16,26 +19,29 @@ export default function Dashboard() {
           }`}
       >
         <div className="flex justify-between items-center p-4 border-b border-gray-700 md:hidden">
-          <span className="text-lg font-semibold">Dashboard</span>
-          <button onClick={() => setIsOpen(false)} className="text-white">
-            <IoClose size={25}></IoClose>
+          <div></div>
+          <button onClick={() => setIsOpen(false)}>
+            <IoClose size={35} color="red" className="border rounded-full flex justify-end p-1"></IoClose>
           </button>
         </div>
         <div className="p-4 space-y-4">
-          <div>
-            <h1 className="text-3xl font-bold flex items-center gap-2"><MdDashboard></MdDashboard>Dashboard</h1>
+          <div className="space-y-4">
+            <Link to='/dashboard/profile'>
+              <div className="flex items-center gap-4 shadow-xl bg-gray-950 p-2 rounded-md">
+                {user && <img src={user.photoURL} className="w-10 h-10 rounded-full flex justify-center" alt="" />}
+                {user && <h1 className=" font-semibold">{user.displayName}</h1>}
+              </div>
+            </Link>
+
           </div>
-          <nav className="flex flex-col space-y-2">
-            <Link to="/" className="block p-2 rounded hover:bg-gray-700">
-              Home
+          <div className="flex flex-col space-y-10 lg:space-y-28">
+            <Sidebar></Sidebar>
+            <div>
+            <Link to="/" className="gap-2 p-2 rounded hover:bg-gray-700 flex items-center">
+             <FaHome></FaHome>Home
             </Link>
-            <Link to="/dashboard/sidebar" className="block p-2 rounded hover:bg-gray-700">
-              Sidebar
-            </Link>
-            <Link to="/dashboard/settings" className="block p-2 rounded hover:bg-gray-700">
-              Settings
-            </Link>
-          </nav>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -46,7 +52,7 @@ export default function Dashboard() {
           <button onClick={() => setIsOpen(true)}>
             <RiMenuFold4Line size={25}></RiMenuFold4Line>
           </button>
-          <span className="text-lg font-semibold">Dashboard</span>
+          {user && <h1 className="text-xl font-semibold">{user.displayName}</h1>}
         </div>
         {/* Outlet for Page Content */}
         <div className="p-4">

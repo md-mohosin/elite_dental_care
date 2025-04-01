@@ -38,7 +38,7 @@ const SignUp = () => {
             name: data.name,
             email: data.email,
             image:data.photo,
-            role: 'customer'
+            role:'customer'
 
         }
 

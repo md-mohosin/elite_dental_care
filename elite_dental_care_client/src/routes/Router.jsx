@@ -10,7 +10,9 @@ import PrivetRoute from "./PrivetRoute";
 import Appointment from "../Pages/appointment/Appointment";
 import AppointmentForm from "../Pages/appointment/AppointmentForm";
 import Dashboard from "../layouts/Dashboard";
-import Sidebar from "../Pages/Dashboard/Sidebar/Sidebar";
+import Profile from "../Pages/Dashboard/Sidebar/Profile";
+import AllUsers from "../Pages/Dashboard/Sidebar/AdminSidebar/AllUsers/AllUsers";
+import AddDoctor from "../Pages/Dashboard/Sidebar/AdminSidebar/AddDoctor/AddDoctor";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -44,13 +46,21 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path:'dashboard',
-    element:<Dashboard></Dashboard>,
-    children:[
-  {
-    path:"sidebar",
-    element:<Sidebar></Sidebar>
-  }
+    path: 'dashboard',
+    element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
+    children: [
+      {
+        path: "profile",
+        element: <PrivetRoute><Profile></Profile></PrivetRoute>
+      },
+      {
+        path:"allUsers_admin",
+        element:<AllUsers></AllUsers>
+      },
+      {
+        path:"addDoctor_admin",
+        element:<AddDoctor></AddDoctor>
+      }
     ]
   }
 ]);

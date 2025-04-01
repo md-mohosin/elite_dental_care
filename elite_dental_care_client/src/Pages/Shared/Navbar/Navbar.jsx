@@ -14,7 +14,7 @@ const Navbar = () => {
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/about'>About</NavLink>
         <NavLink to='/appointment'>Appointment</NavLink>
-        {user && <NavLink to='/dashboard'>Dashboard</NavLink>}
+        {user && <NavLink to='/dashboard/profile'>Dashboard</NavLink>}
 
         {
             user ?
@@ -25,9 +25,6 @@ const Navbar = () => {
                 <NavLink to='/login'>Login</NavLink>
 
         }
-        {/* {
-            user & <img src={user.photoURL} alt="" />
-        } */}
     </>
 
 

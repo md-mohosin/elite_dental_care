@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Navbar from "../../Shared/Navbar/Navbar";
-
 const DoctorDetails = () => {
 
     const axiosPublic = useAxiosPublic()
@@ -17,6 +16,8 @@ const DoctorDetails = () => {
             return res.data
         }
     })
+
+    
 
     return (
         <div>
